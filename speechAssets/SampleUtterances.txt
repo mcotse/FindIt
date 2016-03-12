@@ -3,6 +3,9 @@ WhereIsItIntent Where are {Item}
 WhereIsItIntent Where are the {Item}
 WhereIsItIntent Where can I find {Item}
 
+DoYouHaveIntent Do you have {Item}
+DoYouHaveIntent Is there {Item}
+DoYouHaveIntent Are there {Item}
 
 
 AnswerIntent the answer is {Answer}

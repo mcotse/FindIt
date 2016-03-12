@@ -1,5 +1,14 @@
 {
   "intents": [
+  {
+      "intent": "DoYouHaveIntent",
+      "slots": [
+        {
+          "name": "Item",
+          "type": "LIST_OF_ITEMS"
+        }
+      ]
+  },
 	{
       "intent": "WhereIsItIntent",
       "slots": [
