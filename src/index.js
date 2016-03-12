@@ -244,7 +244,7 @@ function getLocationOfItem(itemSearchedFor) {
       }];
 
     for (var i=0; i< db.length; i++) {
-        if (db[i]["Item Name"] === itemSearchedFor) {
+        if (db[i]["Item Name"].toUpperCase() === itemSearchedFor.toUpperCase()) {
             return db[i];
         }
     }
