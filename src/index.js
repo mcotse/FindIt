@@ -83,6 +83,7 @@ function onIntent(intentRequest, session, callback) {
     // Dispatch to your skill's intent handlers
     if ("WhereIsItIntent" === intentName) {
         setItemInSession(intent, session, callback);
+    /*
     } else if ("AnswerIntent" === intentName) {
         setColorInSession(intent, session, callback);
     } else if ("WhatsMyColorIntent" === intentName) {
@@ -97,6 +98,7 @@ function onIntent(intentRequest, session, callback) {
         failedToSetItemInSession(callback);
     } else if ("TestIntent" === intentName) {
         console.log("yu fukin kno it");
+    */
     } else {
         throw "Invalid intent";
     }

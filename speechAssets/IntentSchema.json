@@ -8,7 +8,8 @@
           "type": "LIST_OF_ITEMS"
         }
       ]
-    },
+    } 
+   /*,
     {
       "intent": "WhatsMyColorIntent"
     },
@@ -54,5 +55,6 @@
     {
       "intent": "AMAZON.CancelIntent"
     }
+    */
   ]
 }

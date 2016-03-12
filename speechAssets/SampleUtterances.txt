@@ -2,9 +2,9 @@ WhereIsItIntent Where is {Item}
 WhereIsItIntent Where are {Item}
 WhereIsItIntent Where are the {Item}
 WhereIsItIntent Where can I find {Item}
+WhereIsItIntent Do you have {Item}
 
-
-
+/*
 AnswerIntent the answer is {Answer}
 AnswerIntent my answer is {Answer}
 AnswerIntent is it {Answer}
@@ -23,7 +23,6 @@ AMAZON.StartOverIntent start
 
 AMAZON.StartOverIntent start new game
 
-
 DontKnowIntent i don't know
 DontKnowIntent don't know
 DontKnowIntent skip
@@ -32,3 +31,4 @@ DontKnowIntent who knows
 DontKnowIntent i don't know this question
 DontKnowIntent i don't know that one
 DontKnowIntent dunno
+*/
