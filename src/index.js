@@ -1,5 +1,3 @@
-var _ = require('lodash-node');
-
 /**
  * This is modified code from sample demonstrates a simple skill built with the Amazon Alexa Skills Kit.
  * The Intent Schema, Custom Slots, and Sample Utterances for this skill, as well as
@@ -139,13 +137,13 @@ function searchForItem(intent, session, callback) {
         // e.g. "Dairy items like " + itemSearchedFor + " can be found in <insert location>";
 
         /* Call function to locate in the DB */
-        var dbItem = getLocationOfItem(itemSearchedFor);
+        var dbItem = getLocationOfItem(itemSearchedFor.value);
 
         if (dbItem && dbItem.Location) {
-            speechOutput = "Item " + itemSearchedFor + " is located in " + dbItem.Location + ". Goodbye.";
+            speechOutput = "Item " + itemSearchedFor.value + " is located in " + dbItem.Location + ". Goodbye.";
             shouldEndSession = true;
         } else {
-            speechOutput = "I cannot find item " + itemSearchedFor + " in the store. Please try again.";
+            speechOutput = "I cannot find item " + itemSearchedFor.value + " in the store. Please try again.";
         }
 
         // Need Confirmation? (Leave out for now..)
@@ -243,8 +241,7 @@ function getLocationOfItem(itemSearchedFor) {
         "Item Name": "Pepper",
         "Location": "Aisle 6",
         "Category": "Spices"
-      },
-    }];
+      }];
 
     for (var i=0; i< db.length; i++) {
         if (db[i]["Item Name"] === itemSearchedFor) {
