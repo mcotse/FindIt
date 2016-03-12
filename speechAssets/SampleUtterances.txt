@@ -2,11 +2,11 @@ WhereIsItIntent Where is {Item}
 WhereIsItIntent Where are {Item}
 WhereIsItIntent Where are the {Item}
 WhereIsItIntent Where can I find {Item}
+WhereIsItIntent Do you have {Item}
 
 DoYouHaveIntent Do you have {Item}
 DoYouHaveIntent Is there {Item}
 DoYouHaveIntent Are there {Item}
-
 
 AnswerIntent the answer is {Answer}
 AnswerIntent my answer is {Answer}
@@ -25,7 +25,6 @@ AMAZON.StartOverIntent new game
 AMAZON.StartOverIntent start
 
 AMAZON.StartOverIntent start new game
-
 
 DontKnowIntent i don't know
 DontKnowIntent don't know
