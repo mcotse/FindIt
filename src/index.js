@@ -141,9 +141,8 @@ function setItemInSession(intent, session, callback) {
     var speechOutput = "";
 
     if (itemSearchedFor) {
-        var item = itemSearchedFor.value;
-        sessionAttributes = createFavoriteColorAttributes(item);
-        speechOutput = "Are you looking for " + item + "?";
+        sessionAttributes = {itemSearchedFor: itemSearchedFor.value};
+        speechOutput = "Are you looking for " + itemSearchedFor.value + "?";
         repromptText = "You can ask me where something is by saying, where is the salt?";
     } else {
         speechOutput = "I'm not sure what you are looking for. Please try again";
