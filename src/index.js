@@ -95,6 +95,8 @@ function onIntent(intentRequest, session, callback) {
     } else if ("AMAZON.NoIntent" === intentName && session.attributes && session.attributes.itemBeingSearched) {
         console.log('TEST NO');
         failedToSetItemInSession(callback);
+    } else if ("TestIntent" === intentName) {
+        console.log("yu fukin kno it");
     } else {
         throw "Invalid intent";
     }
