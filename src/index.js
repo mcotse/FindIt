@@ -140,10 +140,10 @@ function searchForItem(intent, session, callback) {
         var dbItem = getLocationOfItem(itemSearchedFor.value);
 
         if (dbItem && dbItem.Location) {
-            speechOutput = "Item " + itemSearchedFor.value + " is located in " + dbItem.Location + ". Goodbye.";
+            speechOutput = itemSearchedFor.value + " can be found in " + dbItem.Location + ". Goodbye.";
             shouldEndSession = true;
         } else {
-            speechOutput = "I cannot find item " + itemSearchedFor.value + " in the store. Please try again.";
+            speechOutput = "I cannot find " + itemSearchedFor.value + " in the store. Please try again.";
         }
 
         // Need Confirmation? (Leave out for now..)
