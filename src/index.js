@@ -161,6 +161,7 @@ function searchForItem(intent, session, callback) {
             buildSpeechletResponse(intentName, speechOutput, repromptText, shouldEndSession));
 
         });
+    }
 }
 
 /**
