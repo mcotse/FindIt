@@ -36,5 +36,5 @@ Can't find it? FindIt!
 `node.js` `javascript` `amazon-echo` `amazon-alexa` `amazon-lambda` `amazon-dynamoDB`
 
 ## Usage
-Once compiled and setup on AWS and Amazon Echo, the app can be started by saying : `Alexa, open Finder` <br>
+Once compiled and setup on AWS and Amazon Echo, the app can be started by saying : `Alexa, open FindIt` <br>
 Find an item by asking : `Where is {item}?`
