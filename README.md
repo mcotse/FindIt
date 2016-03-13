@@ -1,4 +1,6 @@
 # Findit
+<a href="https://www.youtube.com/watch?v=Ol8lHoxVIQY&feature=youtu.be" target="_blank"><img src="http://img.youtube.com/vi/Ol8lHoxVIQY/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="640" height="480" border="5" /></a>
 ##Amazon Echo Hackathon 2016
 Can't find it? FindIt!
 
