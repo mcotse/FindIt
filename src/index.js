@@ -164,92 +164,92 @@ function getLocationOfItem(itemSearchedFor) {
     // TODO: Fetch from DB !
     // Consider having different location types (e.g. 'aisle 3', 'aisles 3-5', 'front of store', 'near the cashiers')
 
-    // For now:
-    // var db = [
-    //   {
-    //     "Item Name": "Apple",
-    //     "Location": "Aisle 1",
-    //     "Category": "Fruits"
-    //   },
-    //   {
-    //     "Item Name": "Apples",
-    //     "Location": "Aisle 1",
-    //     "Category": "Fruits"
-    //   },
-    //   {
-    //     "Item Name": "Orange",
-    //     "Location": "Aisle 1",
-    //     "Category": "Fruits"
-    //   },
-    //   {
-    //     "Item Name": "Bread",
-    //     "Location": "Aisle 2"
-    //   },
-    //   {
-    //     "Item Name": "Milk",
-    //     "Location": "Aisle 3",
-    //     "Category": "Dairy"
-    //   },
-    //   {
-    //     "Item Name": "Cheese",
-    //     "Location": "Aisle 3",
-    //     "Category": "Dairy"
-    //   },
-    //   {
-    //     "Item Name": "Eggs",
-    //     "Location": "Aisle 4"
-    //   },
-    //   {
-    //     "Item Name": "Apple Juice",
-    //     "Location": "Aisle 1"
-    //   },
-    //   {
-    //     "Item Name": "Beer",
-    //     "Location": "Aisle 7",
-    //     "Category": "Drinks"
-    //   },
-    //   {
-    //     "Item Name": "Coffee",
-    //     "Location": "Aisle 5",
-    //     "Category": "Drinks"
-    //   },
-    //   {
-    //     "Item Name": "Orange Juice",
-    //     "Location": "Aisle 1",
-    //     "Category": "Drinks"
-    //   },
-    //   {
-    //     "Item Name": "Pop Can",
-    //     "Location": "Aisle 5",
-    //     "Category": "Drinks"
-    //   },
-    //   {
-    //     "Item Name": "Salt",
-    //     "Location": "Aisle 6",
-    //     "Category": "Spices"
-    //   },
-    //   {
-    //     "Item Name": "Tea",
-    //     "Location": "Aisle 6",
-    //     "Category": "Drinks"
-    //   },
-    //   {
-    //     "Item Name": "Water",
-    //     "Location": "Aisle 1",
-    //     "Category": "Drinks"
-    //   },
-    //   {
-    //     "Item Name": "Pepper",
-    //     "Location": "Aisle 6",
-    //     "Category": "Spices"
-    //   }];
-    //
-    // for (var i=0; i< db.length; i++) {
-    //     if (db[i]["Item Name"].toUpperCase() === itemSearchedFor.toUpperCase()) {
-    //         return db[i];
-    //     }
-    // }
-    // return;
+    For now:
+    var db = [
+      {
+        "Item Name": "Apple",
+        "Location": "Aisle 1",
+        "Category": "Fruits"
+      },
+      {
+        "Item Name": "Apples",
+        "Location": "Aisle 1",
+        "Category": "Fruits"
+      },
+      {
+        "Item Name": "Orange",
+        "Location": "Aisle 1",
+        "Category": "Fruits"
+      },
+      {
+        "Item Name": "Bread",
+        "Location": "Aisle 2"
+      },
+      {
+        "Item Name": "Milk",
+        "Location": "Aisle 3",
+        "Category": "Dairy"
+      },
+      {
+        "Item Name": "Cheese",
+        "Location": "Aisle 3",
+        "Category": "Dairy"
+      },
+      {
+        "Item Name": "Eggs",
+        "Location": "Aisle 4"
+      },
+      {
+        "Item Name": "Apple Juice",
+        "Location": "Aisle 1"
+      },
+      {
+        "Item Name": "Beer",
+        "Location": "Aisle 7",
+        "Category": "Drinks"
+      },
+      {
+        "Item Name": "Coffee",
+        "Location": "Aisle 5",
+        "Category": "Drinks"
+      },
+      {
+        "Item Name": "Orange Juice",
+        "Location": "Aisle 1",
+        "Category": "Drinks"
+      },
+      {
+        "Item Name": "Pop Can",
+        "Location": "Aisle 5",
+        "Category": "Drinks"
+      },
+      {
+        "Item Name": "Salt",
+        "Location": "Aisle 6",
+        "Category": "Spices"
+      },
+      {
+        "Item Name": "Tea",
+        "Location": "Aisle 6",
+        "Category": "Drinks"
+      },
+      {
+        "Item Name": "Water",
+        "Location": "Aisle 1",
+        "Category": "Drinks"
+      },
+      {
+        "Item Name": "Pepper",
+        "Location": "Aisle 6",
+        "Category": "Spices"
+      }];
+
+    for (var i=0; i< db.length; i++) {
+        if (db[i]["Item Name"].toUpperCase() === itemSearchedFor.toUpperCase()) {
+            return db[i];
+        }
+    }
+    return;
     var ddb = require('dynamodb').ddb({ accessKeyId: 'AKIAIUSI2TR6CN3GFKIA', secretAccessKey: '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' });
 
     var itemAile;
