@@ -266,11 +266,11 @@ function getLocationOfItem(itemSearchedFor) {
         console.log(err);
       }
       if (res){
-        itemAsile = res.items[0].Location;
+        itemAile = res.items[0].Location;
         console.log(itemAile);
       }
     });
-    return itemAsile;
+    return itemAile;
 
 
 }
