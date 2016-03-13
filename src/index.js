@@ -152,7 +152,7 @@ function searchForItem(intent, session, callback) {
                 }
                 // shouldEndSession = true;
             } else {
-                speechOutput = "Sorry, I didn't catch what you\'re looking for. Please try again.";
+                speechOutput = "Sorry, I can\'t find " + itemSearchedFor.value + ".";
                 repromptText = "Can I help you find something in the store? You can try saying: Where are the apples?";
             }
           }
@@ -161,6 +161,10 @@ function searchForItem(intent, session, callback) {
             buildSpeechletResponse(intentName, speechOutput, repromptText, shouldEndSession));
 
         });
+    } else {
+        speechOutput = "Sorry, I didn't catch what you\'re looking for. Please try again.";
+        repromptText = "Can I help you find something in the store? You can try saying: Where are the apples?";
+
     }
 }
 
