@@ -2,11 +2,68 @@ WhereIsItIntent Where is {Item}
 WhereIsItIntent Where are {Item}
 WhereIsItIntent Where are the {Item}
 WhereIsItIntent Where can I find {Item}
-WhereIsItIntent Do you have {Item}
+WhereIsItIntent {Item}
+WhereIsItIntent about {Item}
+WhereIsItIntent for {Item}
+WhereIsItIntent where {Item} is
+WhereIsItIntent where {Item} are
+WhereIsItIntent where the {Item} is
+WhereIsItIntent where the {Item} are
+WhereIsItIntent where I can find {Item}
+WhereIsItIntent where I can get {Item}
+WhereIsItIntent where is the {Item}
+WhereIsItIntent where's the {Item}
+WhereIsItIntent where are the {Item}
+WhereIsItIntent where is the {Item} located
+WhereIsItIntent where is the {Item} found
+WhereIsItIntent where's the {Item} located
+WhereIsItIntent where's the {Item} found
+WhereIsItIntent where are the {Item} located
+WhereIsItIntent where are the {Item} found
+WhereIsItIntent where we can find {Item}
+WhereIsItIntent where we can get {Item}
+WhereIsItIntent what aisle the {Item} is in
+WhereIsItIntent what aisle the {Item} are in
+WhereIsItIntent what section the {Item} is in
+WhereIsItIntent what section the {Item} are in
+WhereIsItIntent what area the {Item} is in
+WhereIsItIntent what area the {Item} are in
+WhereIsItIntent what the location of {Item} is
+WhereIsItIntent what the location of {Item} are
+WhereIsItIntent which aisle the {Item} is in
+WhereIsItIntent which aisle the {Item} are in
+WhereIsItIntent which section the {Item} is in
+WhereIsItIntent which section the {Item} are in
+WhereIsItIntent which area the {Item} is in
+WhereIsItIntent which area the {Item} are in
+WhereIsItIntent how we can get {Item}
+WhereIsItIntent how we get to {Item}
+WhereIsItIntent how I can get {Item}
+WhereIsItIntent how I get to {Item}
+WhereIsItIntent give me the location of {Item}
+WhereIsItIntent give us the location of {Item}
+WhereIsItIntent give me {Item}
+WhereIsItIntent give us {Item}
+WhereIsItIntent get {Item}
+WhereIsItIntent get me {Item}
+WhereIsItIntent get me the {Item}
+WhereIsItIntent get us {Item}
+WhereIsItIntent get us the {Item}
+WhereIsItIntent find {Item}
+WhereIsItIntent find the {Item}
+WhereIsItIntent find me the {Item}
+WhereIsItIntent find us the {Item}
+WhereIsItIntent find where the {Item} is
+WhereIsItIntent find where the {Item} are
+WhereIsItIntent search {Item}
+WhereIsItIntent search for {Item}
+WhereIsItIntent search for the {Item}
 
 DoYouHaveIntent Do you have {Item}
 DoYouHaveIntent Is there {Item}
 DoYouHaveIntent Are there {Item}
+DoYouHaveIntent if you have {Item}
+DoYouHaveIntent if you have the {Item}
 
 AnswerIntent the answer is {Answer}
 AnswerIntent my answer is {Answer}

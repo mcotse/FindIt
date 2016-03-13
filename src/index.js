@@ -109,12 +109,8 @@ function getWelcomeResponse(callback) {
     // If we wanted to initialize the session to have some attributes we could add those here.
     var sessionAttributes = {};
     var cardTitle = "Welcome";
-    //var speechOutput = "Welcome to the Alexa Skills Kit sample. " +
-      //  "Please tell me your favorite color by saying, my favorite color is red";
-    var speechOutput = "Welcome! How can I help you find?";
-    // If the user either does not reply to the welcome message or says something that is not
-    // understood, they will be prompted again with this text.
-    var repromptText = "Please tell me what you are looking for by saying, Where can I find apples?";
+    var speechOutput = "Hello! What can I help you find?";
+    var repromptText = "I can help you find items in the store. Try saying: where\'s the milk?";
     var shouldEndSession = false;
 
     callback(sessionAttributes,
@@ -127,7 +123,7 @@ function getWelcomeResponse(callback) {
 function searchForItem(intent, session, callback) {
     var intentName = intent.name;
     var itemSearchedFor = intent.slots.Item;
-    var repromptText = "";
+    var repromptText = "Can I help you find something in the store? You can try saying: Where is the milk?";
     var sessionAttributes = {};
     var shouldEndSession = false;
     var speechOutput = "";
@@ -140,18 +136,24 @@ function searchForItem(intent, session, callback) {
         /* Call function to locate in the DB */
         //var dbItem = getLocationOfItem(itemSearchedFor.value);
 
-
         var ddb = require('dynamodb').ddb({ accessKeyId: 'AKIAIUSI2TR6CN3GFKIA', secretAccessKey: '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' });
 
         ddb.query('inventory', itemSearchedFor.value, {}, function(err, res, cap) {
           if (err){
             console.log(err);
-            speechOutput = "I cannot find " + itemSearchedFor.value + " in the store. Please try again.";
+            speechOutput = "Sorry, I can\'t find " + itemSearchedFor.value + ".";
           } else if (res){
             var dbItem = res.items[0];
             if (dbItem && dbItem.Location) {
-                speechOutput = itemSearchedFor.value + " can be found in " + dbItem.Location + ". Goodbye.";
-                shouldEndSession = true;
+                if (dbItem.NumberInStock && dbItem.NumberInStock > 0) {
+                    speechOutput = itemSearchedFor.value + " can be found in " + dbItem.Location;
+                } else {
+                    speechOutput = "Sorry, we\'re out of " + itemSearchedFor.value + ", usually located in " + dbItem.Location;
+                }
+                // shouldEndSession = true;
+            } else {
+                speechOutput = "Sorry, I didn't catch what you\'re looking for. Please try again.";
+                repromptText = "Can I help you find something in the store? You can try saying: Where are the apples?";
             }
           }
 
@@ -159,15 +161,6 @@ function searchForItem(intent, session, callback) {
             buildSpeechletResponse(intentName, speechOutput, repromptText, shouldEndSession));
 
         });
-
-    } else {
-        speechOutput = "Sorry, I didn't catch what you are looking for. Please try again.";
-        repromptText = "Can I help you find something in the store?";
-        // TODO: Make suggestions to consumer? Read out available categories of items? (e.g. Meat, Dairy, Drinks, Frozen, ...)
-
-        callback(sessionAttributes,
-            buildSpeechletResponse(intentName, speechOutput, repromptText, shouldEndSession));
-    } 
 }
 
 /**
