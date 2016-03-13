@@ -138,141 +138,36 @@ function searchForItem(intent, session, callback) {
         // e.g. "Dairy items like " + itemSearchedFor + " can be found in <insert location>";
 
         /* Call function to locate in the DB */
-        var dbItem = getLocationOfItem(itemSearchedFor.value);
+        //var dbItem = getLocationOfItem(itemSearchedFor.value);
 
-        if (dbItem && dbItem.Location) {
-            speechOutput = itemSearchedFor.value + " can be found in " + dbItem.Location + ". Goodbye.";
-            shouldEndSession = true;
-        } else {
+
+        var ddb = require('dynamodb').ddb({ accessKeyId: 'AKIAIUSI2TR6CN3GFKIA', secretAccessKey: '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' });
+
+        ddb.query('inventory', itemSearchedFor.value, {}, function(err, res, cap) {
+          if (err){
+            console.log(err);
             speechOutput = "I cannot find " + itemSearchedFor.value + " in the store. Please try again.";
-        }
+          } else if (res){
+            var dbItem = res.items[0];
+            if (dbItem && dbItem.Location) {
+                speechOutput = itemSearchedFor.value + " can be found in " + dbItem.Location + ". Goodbye.";
+                shouldEndSession = true;
+            }
+          }
 
-        // Need Confirmation? (Leave out for now..)
-        // speechOutput = "Are you looking for " + itemSearchedFor.value + "?";
-        // repromptText = "You can ask me where something is by saying, where is the salt?";
+          callback(sessionAttributes,
+            buildSpeechletResponse(intentName, speechOutput, repromptText, shouldEndSession));
+
+        });
+
     } else {
         speechOutput = "Sorry, I didn't catch what you are looking for. Please try again.";
         repromptText = "Can I help you find something in the store?";
         // TODO: Make suggestions to consumer? Read out available categories of items? (e.g. Meat, Dairy, Drinks, Frozen, ...)
-    }
 
-    callback(sessionAttributes,
-         buildSpeechletResponse(intentName, speechOutput, repromptText, shouldEndSession));
-}
-
-function getLocationOfItem(itemSearchedFor) {
-    // TODO: Fetch from DB !
-    // Consider having different location types (e.g. 'aisle 3', 'aisles 3-5', 'front of store', 'near the cashiers')
-
-    // For now:
-    var db = [
-      {
-        "Item Name": "Apple",
-        "Location": "Aisle 1",
-        "Category": "Fruits"
-      },
-      {
-        "Item Name": "Apples",
-        "Location": "Aisle 1",
-        "Category": "Fruits"
-      },
-      {
-        "Item Name": "Orange",
-        "Location": "Aisle 1",
-        "Category": "Fruits"
-      },
-      {
-        "Item Name": "Bread",
-        "Location": "Aisle 2"
-      },
-      {
-        "Item Name": "Milk",
-        "Location": "Aisle 3",
-        "Category": "Dairy"
-      },
-      {
-        "Item Name": "Cheese",
-        "Location": "Aisle 3",
-        "Category": "Dairy"
-      },
-      {
-        "Item Name": "Eggs",
-        "Location": "Aisle 4"
-      },
-      {
-        "Item Name": "Apple Juice",
-        "Location": "Aisle 1"
-      },
-      {
-        "Item Name": "Beer",
-        "Location": "Aisle 7",
-        "Category": "Drinks"
-      },
-      {
-        "Item Name": "Coffee",
-        "Location": "Aisle 5",
-        "Category": "Drinks"
-      },
-      {
-        "Item Name": "Orange Juice",
-        "Location": "Aisle 1",
-        "Category": "Drinks"
-      },
-      {
-        "Item Name": "Pop Can",
-        "Location": "Aisle 5",
-        "Category": "Drinks"
-      },
-      {
-        "Item Name": "Salt",
-        "Location": "Aisle 6",
-        "Category": "Spices"
-      },
-      {
-        "Item Name": "Tea",
-        "Location": "Aisle 6",
-        "Category": "Drinks"
-      },
-      {
-        "Item Name": "Water",
-        "Location": "Aisle 1",
-        "Category": "Drinks"
-      },
-      {
-        "Item Name": "Pepper",
-        "Location": "Aisle 6",
-        "Category": "Spices"
-      }];
-
-    for (var i=0; i< db.length; i++) {
-        if (db[i]["Item Name"].toUpperCase() === itemSearchedFor.toUpperCase()) {
-            return db[i];
-        }
-    }
-    return;
-    var ddb = require('dynamodb').ddb({ accessKeyId: 'AKIAIUSI2TR6CN3GFKIA', secretAccessKey: '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' });
-
-    var itemAile;
-    // ddb.query('items', '', {}, function(err, res, cap) {
-    //   console.log(res);
-    // });
-
-    // res: { count: 23,
-    //        lastEvaluatedKey: { hash: '3d2d6963' },
-    //        items: [...] };
-
-    ddb.query('items', itemSearchedFor, {}, function(err, res, cap) {
-      if (err){
-        console.log(err);
-      }
-      if (res){
-        itemAile = res.items[0].Location;
-        console.log(itemAile);
-      }
-    });
-    return itemAile;
-
-
+        callback(sessionAttributes,
+            buildSpeechletResponse(intentName, speechOutput, repromptText, shouldEndSession));
+    } 
 }
 
 /**
