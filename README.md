@@ -32,6 +32,9 @@ Can't find it? FindIt!
  - UI to update and display store map/route realtime
  - QR code to sync to customer's device so they can keep a log
 
+## Built with
+`node.js` `javascript` `amazon-echo` `amazon-alexa` `amazon-lambda` `amazon-dynamoDB`
+
 ## Usage
 Once compiled and setup on AWS and Amazon Echo, the app can be started by saying : `Alexa, open Finder` <br>
 Find an item by asking : `Where is {item}?`
