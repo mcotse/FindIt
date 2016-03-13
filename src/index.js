@@ -164,7 +164,7 @@ function getLocationOfItem(itemSearchedFor) {
     // TODO: Fetch from DB !
     // Consider having different location types (e.g. 'aisle 3', 'aisles 3-5', 'front of store', 'near the cashiers')
 
-    For now:
+    // For now:
     var db = [
       {
         "Item Name": "Apple",
