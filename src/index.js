@@ -109,7 +109,7 @@ function getWelcomeResponse(callback) {
     // If we wanted to initialize the session to have some attributes we could add those here.
     var sessionAttributes = {};
     var cardTitle = "Welcome";
-    var speechOutput = "Hello! What can I help you find?";
+    var speechOutput = "Hello! Ask me to locate items in the store.";
     var repromptText = "I can help you find items in the store. Try saying: where\'s the milk?";
     var shouldEndSession = false;
 
@@ -146,14 +146,23 @@ function searchForItem(intent, session, callback) {
             var dbItem = res.items[0];
             if (dbItem && dbItem.Location) {
                 if (dbItem.NumberInStock && dbItem.NumberInStock > 0) {
-                    speechOutput = itemSearchedFor.value + " can be found in " + dbItem.Location;
+                    // Prepend 'Yes' for 'DoYouHaveIntent's
+                    if (intentName === 'DoYouHaveIntent') {
+                        speechOutput += "Yes. ";
+                    }
+                    speechOutput += itemSearchedFor.value + " can be found in " + dbItem.Location;
+
+                    // Append 'hurry' if low on stock
+                    if (dbItem.NumberInStock < 5) {
+                        speechOutput += " There are only " + dbItem.NumberInStock + " left, so better hurry!";
+                    }
                 } else {
                     speechOutput = "Sorry, we\'re out of " + itemSearchedFor.value + ", usually located in " + dbItem.Location;
                 }
                 // shouldEndSession = true;
             } else {
-                speechOutput = "Sorry, I can\'t find " + itemSearchedFor.value + ".";
-                repromptText = "Can I help you find something in the store? You can try saying: Where are the apples?";
+                speechOutput = "Sorry, I can\'t find " + itemSearchedFor.value + " in the store.";
+                repromptText = "Can I help you find something else in the store? You can try saying: Where can I find eggs?";
             }
           }
 
