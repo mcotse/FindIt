@@ -249,7 +249,28 @@ function getLocationOfItem(itemSearchedFor) {
     //     }
     // }
     // return;
-    
+    var ddb = require('dynamodb').ddb({ accessKeyId: 'AKIAIUSI2TR6CN3GFKIA', secretAccessKey: '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' });
+
+    var itemAsile;
+    // ddb.query('items', '', {}, function(err, res, cap) {
+    //   console.log(res);
+    // });
+
+    // res: { count: 23,
+    //        lastEvaluatedKey: { hash: '3d2d6963' },
+    //        items: [...] };
+
+    ddb.query('items', itemSearchedFor, {}, function(err, res, cap) {
+      if (err){
+        console.log(err);
+      }
+      if (res){
+        itemAsile = res.items[0].Location;
+      }
+    });
+    return itemAsile;
+
+
 }
 
 /**
